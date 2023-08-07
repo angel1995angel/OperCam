@@ -1,0 +1,140 @@
+<div class="row" [ngStyle]="{'display':_insert}">
+
+  <div class="col-md-12">
+
+    <div class="card card-profile shadow">
+      <div class="card-body">
+
+
+
+        <form>
+          <h6 class="heading-small text-muted mb-4">Información de la empresa</h6>
+          <div class="row">
+            <div class="col-md-4">
+              <mat-form-field appearance="outline">
+                <mat-label>Rif</mat-label>
+                <input matInput placeholder="Rif" 
+                [ngModelOptions]="{standalone: true}"
+                (blur)="Consultar()"
+                [(ngModel)]="Empresa.rif"  value="{{Empresa.rif}}">
+                <mat-icon matSuffix (click)="Seleccionar()">search</mat-icon>
+
+              </mat-form-field>
+            </div>
+            <div class="col-md-8">
+              <mat-form-field appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input matInput placeholder="Nombre" value="{{Empresa.nombre}}"
+                [ngModelOptions]="{standalone: true}"
+                [(ngModel)]="Empresa.nombre" >
+                <mat-icon matSuffix>account_circle</mat-icon>
+
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <mat-form-field appearance="outline">
+                <mat-label>Siglas</mat-label>
+                <input matInput placeholder="Siglas" value="{{Empresa.siglas}}"
+                [ngModelOptions]="{standalone: true}"
+                [(ngModel)]="Empresa.siglas" >
+
+              </mat-form-field>
+            </div>
+            <div class="col-md-4">
+              <mat-form-field appearance="outline">
+                <mat-label>Emisor</mat-label>
+                <input matInput placeholder="Emisor" 
+                [ngModelOptions]="{standalone: true}"
+                [(ngModel)]="Empresa.emisor" 
+                value="{{Empresa.emisor}}">
+
+              </mat-form-field>
+            </div>
+            <div class="col-md-4">
+              <mat-form-field appearance="outline">
+                <mat-label>Depositario Cnetral</mat-label>
+                <input matInput placeholder="Depositario" 
+                
+                [ngModelOptions]="{standalone: true}"
+                [(ngModel)]="Empresa.depositario" 
+                 value="{{Empresa.depositario}}">
+
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <mat-form-field appearance="outline">
+                <mat-label>Estatus</mat-label>
+                <input matInput placeholder="Estatus" value="{{Empresa.estatus}}"
+                [ngModelOptions]="{standalone: true}"
+                [(ngModel)]="Empresa.estatus" >
+
+              </mat-form-field>
+            </div>
+            <div class="col-md-8">
+              <mat-form-field appearance="outline">
+                <mat-label>Numero de cuenta</mat-label>
+                <input matInput placeholder="Numero de cuenta" 
+                [ngModelOptions]="{standalone: true}"
+                [(ngModel)]="Empresa.cuenta" 
+                value="{{Empresa.cuenta}}">
+
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-12 text-right">
+                <hr>
+                <button mat-flat-button color="primary" (click)="Guardar()">Aceptar</button>
+            </div>
+
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div  [ngStyle]="{'display':_search}">
+  <br>
+  <div class="row">
+      <div class="col-md-12 text-right">
+          <button mat-icon-button aria-label="volver" (click)="atras()" >
+              <mat-icon class="texto-gray">arrow_back</mat-icon>
+          </button>
+      </div>
+  </div>
+  <mat-selection-list>
+      <mat-list *ngFor="let e of lstEmpresas; let i=index "
+          style="border-bottom: 1px rgba(224, 223, 223, 0.945) solid;">
+          <div class="row">
+
+              <div class="col-md-2 texto-detalle">
+                  {{ e.cedula | uppercase }}
+              </div>
+              <div class="col-md-6 texto-lista">
+                  {{ e.nombre | uppercase}}
+              </div>
+              <div class="col-md-3 texto-detalle">
+                  {{ e.especialidad | uppercase }}
+              </div>
+
+              <div class="col-md-1 text-right">
+
+                  <button mat-icon-button aria-label="Editar" (click)="editar(e)">
+                      <mat-icon class="texto-gray">edit</mat-icon>
+                  </button>
+
+              </div>
+          </div>
+      </mat-list>
+  </mat-selection-list>
+  <br><br>
+</div>

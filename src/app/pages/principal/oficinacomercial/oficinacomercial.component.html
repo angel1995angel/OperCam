@@ -1,0 +1,111 @@
+<div class="row" [ngStyle]="{'display':_insert}">
+
+    <div class="col-md-12">
+
+        <div class="card card-profile shadow">
+            <div class="card-body">
+
+
+
+                <form>
+                    <h6 class="heading-small text-muted mb-4">Información de la empresa</h6>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Codigo</mat-label>
+                                <input matInput placeholder="Codigo" [ngModelOptions]="{standalone: true}"
+                                (blur)="Consultar()"
+                                    [(ngModel)]="Oficinacomercial.codigo" value="{{Oficinacomercial.codigo}}">
+                                <mat-icon matSuffix (click)="Seleccionar()">search</mat-icon>
+
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-8">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Nombre</mat-label>
+                                <input matInput placeholder="Nombre" value="{{Oficinacomercial.nombre}}"
+                                    [ngModelOptions]="{standalone: true}" [(ngModel)]="Oficinacomercial.nombre">
+                                <mat-icon matSuffix>account_circle</mat-icon>
+
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Direccion</mat-label>
+                                <input matInput placeholder="Direccion" [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="Oficinacomercial.direccion" value="{{Oficinacomercial.direccion}}">
+                                <mat-icon matSuffix>account_circle</mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Estado</mat-label>
+                                <input matInput placeholder="Estado" [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="Oficinacomercial.estado" value="{{Oficinacomercial.estado}}">
+                                <mat-icon matSuffix>account_circle</mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Municipio</mat-label>
+                                <input matInput placeholder="Municipio" [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="Oficinacomercial.municipio" value="{{Oficinacomercial.municipio}}">
+                                <mat-icon matSuffix>account_circle</mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-12 text-right">
+                            <hr>
+                            <button mat-flat-button color="primary" (click)="Guardar()">Aceptar</button>
+                        </div>
+            
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div  [ngStyle]="{'display':_search}">
+    <br>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <button mat-icon-button aria-label="volver" (click)="atras()" >
+                <mat-icon class="texto-gray">arrow_back</mat-icon>
+            </button>
+        </div>
+    </div>
+    <mat-selection-list>
+        <mat-list *ngFor="let e of lstOficinacomercial; let i=index "
+            style="border-bottom: 1px rgba(224, 223, 223, 0.945) solid;">
+            <div class="row">
+  
+                <div class="col-md-2 texto-detalle">
+                    {{ e.codigo | uppercase }}
+                </div>
+                <div class="col-md-6 texto-lista">
+                    {{ e.nombre | uppercase}}
+                </div>
+                <div class="col-md-3 texto-detalle">
+                    {{ e.direccion | uppercase }}
+                </div>
+  
+                <div class="col-md-1 text-right">
+  
+                    <button mat-icon-button aria-label="Editar" (click)="editar(e)">
+                        <mat-icon class="texto-gray">edit</mat-icon>
+                    </button>
+  
+                </div>
+            </div>
+        </mat-list>
+    </mat-selection-list>
+    <br><br>
+  </div>
+  
